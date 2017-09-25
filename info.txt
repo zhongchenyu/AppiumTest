@@ -1,0 +1,9 @@
+com.shopee.tw/com.shopee.app.ui.home.HomeActivity_
+com.shopee.app.ui.home.HomeActivity_
+
+platformName=Android
+platformVersion=6.0
+deviceName=emulator-5554
+appPackage=chenyu.jokes
+appActivity=.feature.main.MainActivity
+noReset=true

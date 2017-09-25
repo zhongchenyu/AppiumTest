@@ -1,0 +1,27 @@
+<suite name="WebViewSuit2" >
+    <parameter name="suitName" value="WebViewSuit2"/>
+    <parameter name="node" value="node"/>
+    <parameter name="appium.js" value="C:\Users\chenyu\AppData\Local\Programs\appium-desktop\resources\app\node_modules\appium\build\lib\main.js"/>
+    <parameter name="port"  value="4723"/>
+    <parameter name="bootstrap_port" value="4724"/>
+    <parameter name="chromedriver_port" value="9515"/>
+    <parameter name="udid" value="emulator-5554"/>
+    <parameter name="platformName" value="Android"/>
+    <parameter name="platformVersion" value="6.0"/>
+    <parameter name="deviceName" value="emulator-5554"/>
+    <parameter name="appPackage" value="chenyu.memorydemo"/>
+    <parameter name="appActivity" value=".MainActivity"/>
+    <parameter name="noReset" value="false"/>
+    <parameter name="app" value="chenyu.memorydemo-debug-v1.2.apk"/>
+
+    <test name="WebView">
+        <classes>
+            <class name="main.java.test.TestWebView"/>
+        </classes>
+    </test>
+    <test name="Animation">
+        <classes>
+            <class name="main.java.test.TestAnimation"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,7 @@
+platformName=Android
+platformVersion=7.0
+deviceName=TWGDU16903002828
+appPackage=chenyu.memorydemo
+appActivity=.MainActivity
+noReset=true
+app=chenyu.memorydemo-debug-v1.1.apk

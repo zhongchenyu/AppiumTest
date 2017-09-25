@@ -1,0 +1,6 @@
+<suite name="Main suite">
+    <suite-files>
+        <suite-file path="testng1.xml"/>
+        <suite-file path="testng2.xml"/>
+    </suite-files>
+</suite>
