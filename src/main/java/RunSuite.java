@@ -2,12 +2,11 @@ package main.java;
 
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
-import org.testng.xml.XmlSuite;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RunSuit {
+public class RunSuite {
     public static void main(String[] args) {
         TestListenerAdapter tla = new TestListenerAdapter();
         TestNG testng = new TestNG();

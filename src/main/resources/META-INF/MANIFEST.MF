@@ -27,5 +27,5 @@ Class-Path: lib\junit-4.12.jar lib\commons-cli-1.4.jar lib\java-client
  g-aop-4.3.10.RELEASE.jar lib\spring-beans-4.3.10.RELEASE.jar lib\spri
  ng-core-4.3.10.RELEASE.jar lib\spring-expression-4.3.10.RELEASE.jar l
  ib\aspectjweaver-1.8.10.jar lib\opencv-3.2.0-1.jar
-Main-Class: main.java.RunSuit
+Main-Class: main.java.RunSuite
 

@@ -7,3 +7,5 @@ deviceName=emulator-5554
 appPackage=chenyu.jokes
 appActivity=.feature.main.MainActivity
 noReset=true
+
+com.wumii.android.loan/com.wumii.android.loan.ui.activity.MainActivity

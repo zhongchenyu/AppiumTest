@@ -2,6 +2,7 @@ package main.java;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class AppiumServerController {
 
@@ -53,7 +54,7 @@ public class AppiumServerController {
                     break;
             }
         }
-        startServer(nodePath, appiumJsPath,port,bootstrapPort,chromedriver_port,UID);
+        //startServer(nodePath, appiumJsPath,port,bootstrapPort,chromedriver_port,UID);
         String cmd = nodePath + " \"" + appiumJsPath + "\" " + "--session-override " + " -p "
                 + port + " -bp " + bootstrapPort + " --chromedriver-port " + chromedriver_port + " -U " + UID;
         System.out.println(cmd);
@@ -73,7 +74,7 @@ public class AppiumServerController {
         process.destroy();
     }
 
-    public void startServer(String nodePath, String appiumPath, String port,
+    public void startServer(ReentrantLock lock, String nodePath, String appiumPath, String port,
                             String bootstrapPort, String chromeDriverPort, String udid) throws Exception {
         Process process;
         String cmd = nodePath + " \"" + appiumPath + "\" " + "--session-override " + " -p "
@@ -87,6 +88,9 @@ public class AppiumServerController {
         String line;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
+            if(line.startsWith("[Appium] Appium REST http interface listener started on")) {
+                lock.unlock();
+            }
         }
         process.waitFor();
         System.out.println("Stop appium server");

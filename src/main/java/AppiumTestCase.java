@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by chenyu on 2017/9/9.
@@ -28,6 +29,15 @@ public class AppiumTestCase {
     //protected int port = 4723;
     protected int maxWaitTimeMS = 1000;
     protected int waitIntervalMS = 1000;
+    protected ReentrantLock serverLock = new ReentrantLock();
+
+    public void lockServerlock() {
+        serverLock.lock();
+    }
+
+    public void unlockServerLock() {
+        serverLock.unlock();
+    }
 
     @Parameters({"node", "appium.js", "port", "bootstrap_port", "chromedriver_port",
             "udid"})
@@ -40,7 +50,8 @@ public class AppiumTestCase {
                 @Override
                 public void run() {
                     try {
-                        AppiumServerController.getInstance().startServer(nodePath, appiumPath, port, bootstrapPort, chromeDriverPort, udid);
+                        serverLock.lock();
+                        AppiumServerController.getInstance().startServer(serverLock,nodePath, appiumPath, port, bootstrapPort, chromeDriverPort, udid);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -48,10 +59,13 @@ public class AppiumTestCase {
             }).start();
 
             try {
-                Thread.sleep(40000);
+                Thread.sleep(2000); //确保服务器启动的线程先获得锁
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            serverLock.lock();
+            System.out.println("Server with port "+ port + " has  started!!!");
+            serverLock.unlock();
         }
     }
 
